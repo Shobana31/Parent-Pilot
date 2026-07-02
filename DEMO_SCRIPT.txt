@@ -1,0 +1,47 @@
+[0:00 - HOOK]
+Raising children today means dealing with screen time struggles, neurodiversity resources, and child mental health, all while trying to protect our family's digital privacy. That is why we built Parent Pilot, a secure multi-agent assistant designed to give parents verified, age-appropriate guidance when they need it most.
+(pause)
+
+[0:20 - WHAT IT IS]
+Parent Pilot is an AI parenting assistant built on the Google ADK 2.0 Workflow Graph engine. Created under the Freestyle track, this application showcases how multiple specialized agents can collaborate safely under a unified interface.
+(pause)
+
+[0:40 - SHOW THE BANNER]
+(show assets/cover_page_banner.png)
+As you can see from our cover banner, Parent Pilot brings together child development support, emotional well-being, and specialized education services in a single, cohesive hub.
+(pause)
+
+[1:00 - ARCHITECTURE]
+(show assets/architecture_diagram.png)
+Let us walk through the architecture of the system.
+Every parenting query starts at the security checkpoint node, which de-identifies contact information, detects prompt injections, and audits severity.
+If cleared, the orchestrator agent takes over to classify the intent and delegate the query to the best specialist sub-agent.
+The developmental coach, mental health advocate, and disability support agent then call domain-specific tools via local Model Context Protocol or MCP connections to retrieve facts.
+Before the parent sees any advice involving schedules or discipline rules, the flow passes through a human approval gate, prompting the parent to review and authorize the recommendations.
+Finally, the output is generated and logged securely.
+(pause)
+
+[2:00 - LIVE DEMO]
+(switch to playground at localhost:18081)
+Now let's see Parent Pilot in action.
+First, we will ask: "What is the recommended screen time limit for my 5 year old child?"
+(pause)
+Notice that the developmental coach queries our screen time MCP tool, which recommends a maximum of one hour of educational programming.
+Because this involves schedules, the human approval gate interrupts the run and displays a Parental Gateway prompt in the playground.
+Once we type "approve", the assistant returns the complete tips.
+(pause)
+Next, let's test our special needs advocate with: "My 9-year-old child has ADHD, and I need tips for homework routines and support resources."
+(pause)
+Here, the orchestrator routes the request to our disability support agent. It calls our get_disability_resources tool to pull guidance from CHADD and Understood.org, giving us a list of visual routines.
+(pause)
+Finally, let's test privacy with: "Hi, my name is John. My email is john@example.com. Can you suggest positive discipline for my 7 year old child?"
+(pause)
+In this case, the security checkpoint immediately intercepts the email, redacting it to "[EMAIL_REDACTED]". The coach agent then provides chore-related discipline tips.
+(pause)
+
+[3:00 - SECURITY & MCP]
+Our security checkpoint runs PII regex filters and audit logs every execution to JSON format, while our stdio MCP server exposes precise, structured tools for parenting calculations.
+(pause)
+
+[3:30 - IMPACT / CLOSE]
+Parent Pilot gives parents peace of mind by delivering tailored, expert developmental advice without compromising their family's privacy or decision-making authority. Thank you.
